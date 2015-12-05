@@ -6,5 +6,5 @@
     "type": "git",
     "url": "https://github.com/christianhg/pop-revolution.git"
   },
-  "main": "./dist/index.html",
+  "main": "./dist/index.html"
 }
