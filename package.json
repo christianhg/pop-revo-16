@@ -1,0 +1,12 @@
+{
+  "name": "pop-revolution",
+  "description": "Providing pop revolutionary music for the people since 2004",
+  "version": "0.0.1",
+  "main": "./dist/index.html",
+  "homepage": "http://poprevo.dk",
+  "author": "Christian Grøngaard <christianhg@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christianhg/pop-revolution.git"
+  }
+}
