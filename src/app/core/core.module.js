@@ -3,6 +3,6 @@
 
   angular
     .module('poprevo.core', [
-
+      'ui.router'
     ]);
 })();
