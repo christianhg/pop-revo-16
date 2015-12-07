@@ -3,6 +3,8 @@
 
   angular
     .module('poprevo', [
-      'poprevo.core'
+      'poprevo.core',
+      'poprevo.home',
+      'poprevo.templates'
     ]);
 })();
