@@ -1,0 +1,44 @@
+.splash {
+  height: 100vh;
+  position: relative;
+  text-align: center;
+}
+
+  .splash-inner {
+    letter-spacing: rem(3px);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%
+  }
+
+    .splash-logo {
+      margin-bottom: rem(28px);
+
+      img {
+        margin: 0 auto;
+      }
+    }
+
+    .splash-year {
+      display: block;
+      font-size: rem(20px);
+      font-weight: bold;
+      margin-bottom: rem(20px);
+    }
+
+    .splash-days {
+      display: block;
+      margin-bottom: rem(5px);
+    }
+
+    .splash-place {
+      display: block;
+      text-transform: uppercase;
+    }
+
+    .dash {
+			letter-spacing: 0;
+			position: relative;
+			top: -0.5em;
+		}

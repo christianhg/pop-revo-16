@@ -1,0 +1,7 @@
+@function rem($target, $context: $font-size-base) {
+  @return ($target / $context) * 1rem;
+}
+
+@function remneg($target, $context: $font-size-base) {
+  @return ($target / $context) * -1rem;
+}

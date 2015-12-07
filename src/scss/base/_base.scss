@@ -1,0 +1,20 @@
+/**
+ * Box sizing
+ */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  @extend %font-smoothing;
+
+  background: $color-primary;
+  font-family: $font-family-default;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
