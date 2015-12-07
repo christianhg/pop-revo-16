@@ -33,6 +33,12 @@
         ],
     };
 
+    gulp.task('assets', function() {
+      gulp.src(['./src/assets/**/*'])
+        .pipe(plumber())
+        .pipe(gulp.dest('./build/assets'));
+    });
+
     gulp.task('fonts', function() {
         gulp.src(vendor.fonts)
             .pipe(plumber())
@@ -132,7 +138,7 @@
         });
     });
 
-    gulp.task('build', ['fonts', 'inject'], browserSync.reload);
+    gulp.task('build', ['assets', 'fonts', 'inject'], browserSync.reload);
 
     gulp.task('dev', ['serve'], function() {
         gulp.watch('./src/**/*', ['build']);
