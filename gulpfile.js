@@ -10,8 +10,10 @@
     var inject = require('gulp-inject');
     var jshint = require('gulp-jshint');
     var minifyCSS = require('gulp-minify-css');
+    var minifyHTML = require('gulp-minify-html');
     var ngAnnotate = require('gulp-ng-annotate');
     var plumber = require('gulp-plumber');
+    var rename = require('gulp-rename');
     var sass = require('gulp-ruby-sass');
     var sourcemaps = require('gulp-sourcemaps');
     var stripDebug = require('gulp-strip-debug');
@@ -142,5 +144,72 @@
 
     gulp.task('dev', ['serve'], function() {
         gulp.watch('./src/**/*', ['build']);
+    });
+
+    gulp.task('dist-index', function() {
+      return gulp.src('./src/index.html')
+        .pipe(plumber())
+        .pipe(gulp.dest('./dist'));
+    });
+
+    gulp.task('dist-assets', ['build'], function() {
+      return gulp.src(['./build/assets/**/*'])
+        .pipe(plumber())
+        .pipe(gulp.dest('./dist/assets'));
+    });
+
+    gulp.task('dist-css-app', ['build'], function() {
+      return gulp.src(['./build/css/app.css'])
+        .pipe(plumber())
+        .pipe(minifyCSS())
+        .pipe(rename('app.min.css'))
+        .pipe(gulp.dest('./dist/css'));
+    });
+
+    gulp.task('dist-css', ['dist-css-app'], function() {
+
+    });
+
+    gulp.task('dist-js-app', ['build'], function() {
+      return gulp.src(['./build/js/app/**/*', './build/js/templates/**/*'])
+        .pipe(plumber())
+        .pipe(concat('app.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./dist/js'));
+    });
+
+    gulp.task('dist-js-vendor', function() {
+      return gulp.src(['./build/js/vendor/**/*'])
+        .pipe(plumber())
+        .pipe(concat('vendor.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./dist/js'));
+    });
+
+    gulp.task('dist-js', ['dist-js-app', 'dist-js-vendor'], function() {
+
+    });
+
+    gulp.task('dist-inject', ['dist-css', 'dist-index', 'dist-js'], function() {
+      return gulp.src('./dist/index.html')
+        .pipe(plumber())
+        .pipe(inject(
+          gulp.src('./dist/css/app.min.css'),
+          {relative: true, name: 'app'}
+        ))
+        .pipe(inject(
+          gulp.src('./dist/js/app.min.js'),
+          {relative: true, name: 'app'}
+        ))
+        .pipe(inject(
+          gulp.src(['./dist/js/vendor.min.js']),
+          {relative: true, name: 'vendor'}
+        ))
+        .pipe(minifyHTML())
+        .pipe(gulp.dest('./dist'));
+    });
+
+    gulp.task('dist', ['dist-assets', 'dist-inject'], function() {
+
     });
 })();
