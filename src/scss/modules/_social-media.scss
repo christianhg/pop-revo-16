@@ -1,0 +1,30 @@
+.social-media {
+  bottom: rem(28px);
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+
+  &:hover {
+    a {
+      color: $color-grey;
+      &:hover {
+        color: $color-black;
+      }
+    }
+  }
+
+  &--list {
+    @extend %clearfix;
+  }
+
+  &--list-item {
+    float: left;
+    margin: 0 5px;
+  }
+
+  &--link {
+    color: $color-black;
+    font-size: rem(28px);
+    transition: $transition-color;
+  }
+}
