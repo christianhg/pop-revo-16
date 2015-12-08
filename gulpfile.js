@@ -41,10 +41,20 @@
         .pipe(gulp.dest('./build/assets'));
     });
 
-    gulp.task('fonts', function() {
-        gulp.src(vendor.fonts)
-            .pipe(plumber())
-            .pipe(gulp.dest('./build/fonts'));
+    gulp.task('fonts-app', function() {
+      gulp.src(['./src/assets/fonts/**/*'])
+        .pipe(plumber())
+        .pipe(gulp.dest('./build/fonts'));
+    });
+
+    gulp.task('fonts-vendor', function() {
+      gulp.src(vendor.fonts)
+        .pipe(plumber())
+        .pipe(gulp.dest('./build/fonts'));
+    });
+
+    gulp.task('fonts', ['fonts-app', 'fonts-vendor'], function() {
+
     });
 
     gulp.task('views', function() {
