@@ -9,6 +9,7 @@
   "main": "./dist/index.html",
   "dependencies": {
     "angular": "~1.4.8",
-    "angular-ui-router": "~0.2.15"
+    "angular-ui-router": "~0.2.15",
+    "angular-moment": "~0.10.3"
   }
 }
