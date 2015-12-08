@@ -3,7 +3,8 @@
 
   angular
     .module('poprevo.core', [
-      'ui.router',
-      'angularMoment'
+      'angular-google-analytics',
+      'angularMoment',
+      'ui.router'
     ]);
 })();
